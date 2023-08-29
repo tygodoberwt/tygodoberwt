@@ -1,0 +1,31 @@
+import random
+
+def main():
+    print("Welkom bij het dobbelspel!")
+    score = 0
+    
+    while True:
+        prev_roll = roll_dice()
+        print(f"Dobbelsteenresultaat: {prev_roll}")
+        
+        guess = input("Raad of het volgende resultaat hoger (H) of lager (L) zal zijn: ").upper()
+        next_roll = roll_dice()
+        print(f"Volgend dobbelsteenresultaat: {next_roll}")
+        
+        if (guess == "H" and next_roll > prev_roll) or (guess == "L" and next_roll < prev_roll):
+            score += 1
+            print("Goed geraden! Je score is nu:", score)
+        else:
+            print("Helaas, fout geraden. Je eindscore is:", score)
+            break
+        
+        play_again = input("Wil je opnieuw spelen? (ja/nee): ").lower()
+        if play_again != "ja":
+            print("Bedankt voor het spelen!")
+            break
+
+def roll_dice():
+    return random.randint(1, 6)
+
+if __name__ == "__main__":
+    main()
